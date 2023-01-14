@@ -31,6 +31,13 @@ public class User {
     @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
     private List<Blog> userBlogs;
 
+    public List<Blog> getUserBlogs() {
+        return userBlogs;
+    }
+
+    public void setUserBlogs(List<Blog> userBlogs) {
+        this.userBlogs = userBlogs;
+    }
 
     public int getId() {
         return id;

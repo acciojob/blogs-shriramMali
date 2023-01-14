@@ -32,13 +32,22 @@ public class ImageService {
     }
 
     public Image findById(int id) {
-        Image image=null; //imageRepository2.findById(id);
+        Image image=imageRepository2.findById(id).get();
         return image;
     }
 
     public int countImagesInScreen(Image image, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
+        int count=0;
+        int diamension=(Integer.parseInt( image.getDimension()));
+
+        if(image!=null && diamension!=0){
+
+         count=Integer.parseInt(screenDimensions)/diamension;
+
+        }
+      return count;
+
         //In case the image is null, return 0
-return 0;
     }
 }
