@@ -27,7 +27,7 @@ public class UserService {
         userRepository3.save(user);
     }
 
-  /*  public User findUser(String username){
+   public User findByUsername(String username){
     Iterator<User> n=userRepository3.findAll().iterator();
         for (Iterator<User> it = n; it.hasNext(); ) {
             User user = it.next();
@@ -35,13 +35,9 @@ public class UserService {
         }
  return null;
     }
-*/
-    public User findByUsername(String username){
-        Iterator<User> n=userRepository3.findAll().iterator();
-        for (Iterator<User> it = n; it.hasNext(); ) {
-            User user = it.next();
-            if(user.getUsername().equals(username)) return user;
-        }
-        return userRepository3.findUserByUsername(username);
+
+    public User findUserByUsername(String username){
+
+        return userRepository3.findByUsername(username);
     }
 }
