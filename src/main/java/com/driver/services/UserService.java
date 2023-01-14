@@ -5,8 +5,7 @@ import com.driver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 @Service
 public class UserService {
@@ -28,7 +27,17 @@ public class UserService {
         userRepository3.save(user);
     }
 
+    public User findUser(String username){
+    Iterator<User> n=userRepository3.findAll().iterator();
+        for (Iterator<User> it = n; it.hasNext(); ) {
+            User user = it.next();
+            if(user.getUsername().equals(username)) return user;
+        }
+ return null;
+    }
+
     public User findUserByUsername(String username){
-        return userRepository3.findByUsername(username);
+
+        return userRepository3.findUser(username);
     }
 }
