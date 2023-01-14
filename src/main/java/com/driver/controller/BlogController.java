@@ -17,6 +17,7 @@ BlogService blogService;
     @GetMapping
     public ResponseEntity<Integer> getAllBlogs() {
         int countOfBlogs = 0;
+        countOfBlogs=blogService.showBlogs().size();
         return new ResponseEntity<>(countOfBlogs, HttpStatus.OK);
     }
 
