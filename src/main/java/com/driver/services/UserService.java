@@ -36,7 +36,7 @@ public class UserService {
  return null;
     }
 */
-    public User findUserByUsername(String username){
+    public User findByUsername(String username){
         Iterator<User> n=userRepository3.findAll().iterator();
         for (Iterator<User> it = n; it.hasNext(); ) {
             User user = it.next();
