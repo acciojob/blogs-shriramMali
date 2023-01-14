@@ -17,6 +17,9 @@ public class User {
 
     private String firstName;
 
+    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
+    private List<Blog> userBlogs;
+
     public User() {
     }
 
@@ -28,8 +31,7 @@ public class User {
     }
 
 
-    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
-    private List<Blog> userBlogs;
+
 
     public List<Blog> getUserBlogs() {
         return userBlogs;

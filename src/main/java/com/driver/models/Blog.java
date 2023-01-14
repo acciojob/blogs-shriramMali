@@ -9,17 +9,6 @@ import java.util.List;
 @Table(name="blog")
 public class Blog {
 
-    public Blog() {
-
-    }
-
-
-
-    public Blog( String content, String title, Date date) {
-        this.content = content;
-        this.title = title;
-        this.date = date;
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -29,13 +18,24 @@ public class Blog {
 
     private Date date;
 
-
     @ManyToOne
     @JoinColumn
     private User user;
 
     @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
     private List<Image> blogsImages;
+
+    public Blog() {
+
+    }
+
+    public Blog( String content, String title, Date date) {
+        this.content = content;
+        this.title = title;
+        this.date = date;
+    }
+
+
 
     public int getId() {
         return id;
