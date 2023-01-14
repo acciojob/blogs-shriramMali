@@ -1,5 +1,6 @@
 package com.driver.services;
 import java.util.Objects;
+import com.driver.repositories.BlogRepository;
 import com.driver.models.*;
 import com.driver.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +14,24 @@ public class ImageService {
     @Autowired
     ImageRepository imageRepository2;
 
+    @Autowired
+    BlogRepository blogRepository;
+
     public Image createAndReturn(Blog blog, String description, String dimensions){
         //create an image based on given parameters and add it to the imageList of given blog
         Image image=new Image();
         image.setDimensions(dimensions);
         image.setDescription(description);
+        image.setBlog(blog);
 
         List<Image> imageList=new ArrayList<>();
         imageList=blog.getImageList();
         imageList.add(image);
+
         blog.setImageList(imageList);
 
+        imageRepository2.save(image);
+        blogRepository.save(blog);
         return image;
     }
 
