@@ -1,5 +1,5 @@
 package com.driver.services;
-
+import java.util.Objects;
 import com.driver.models.*;
 import com.driver.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +38,12 @@ public class ImageService {
 
     public int countImagesInScreen(Image image, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
-        int count=0;
-        int diamension=(Integer.parseInt( image.getDimensions()));
-
-        if(image!=null && diamension!=0){
-
-         count=Integer.parseInt(screenDimensions)/diamension;
-
+        if (screenDimensions.split("X").length == 2 || Objects.nonNull(image)) {
+            Integer maxLength = Integer.parseInt(screenDimensions.split("X")[0]) / Integer.parseInt(image.getDimensions().split("X")[0]) ;
+            Integer maxBreadth = Integer.parseInt(screenDimensions.split("X")[1]) / Integer.parseInt(image.getDimensions().split("X")[1]);
+            return maxLength * maxBreadth;
         }
-      return count;
-
+        return 0;
         //In case the image is null, return 0
     }
 }
