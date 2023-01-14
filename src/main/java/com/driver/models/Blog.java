@@ -1,3 +1,4 @@
+
 package com.driver.models;
 import com.driver.models.User;
 
@@ -29,13 +30,13 @@ public class Blog {
 
     }
 
-    public Blog( String content, String title, Date date) {
+    public Blog(String content, String title, Date date, User user, List<Image> blogsImages) {
         this.content = content;
         this.title = title;
         this.date = date;
+        this.user = user;
+        this.blogsImages = blogsImages;
     }
-
-
 
     public int getId() {
         return id;

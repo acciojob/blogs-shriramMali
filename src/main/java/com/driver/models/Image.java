@@ -24,11 +24,11 @@ public class Image {
     public Image() {
     }
 
-    public Image(String description, String dimension) {
+    public Image(String description, String dimension, Blog blog) {
         this.description = description;
         this.dimension = dimension;
+        this.blog = blog;
     }
-
 
     public int getId() {
         return id;
