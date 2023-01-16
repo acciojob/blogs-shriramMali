@@ -17,12 +17,9 @@ public class ImageService {
     @Autowired
     BlogRepository blogRepository;
 
-    public Image createAndReturn(Blog blog1, String description, String dimensions){
+    public Image createAndReturn(Blog blog, String description, String dimensions){
         //create an image based on given parameters and add it to the imageList of given blog
-       /* Image image=new Image();
-        image.setDimensions(dimensions);
-        image.setDescription(description);
-        image.setBlog(blog);
+        Image image=new Image(dimensions,dimensions,blog);
 
         List<Image> imageList=new ArrayList<>();
         imageList=blog.getImageList();
@@ -32,8 +29,9 @@ public class ImageService {
 
        // imageRepository2.save(image);
         blogRepository.save(blog);
-        return image;*/
-        Image image=new Image(description,dimensions);
+        return image;
+
+      /*  Image image=new Image(description,dimensions);
         image.setBlog(blog1);
 
         List<Image> imageList=blog1.getImageList();
@@ -44,17 +42,22 @@ public class ImageService {
 
         blogRepository.save(blog1);
 
-        return image;
+        return image;*/
 
     }
 
     public void deleteImage(Image image){
-        if(imageRepository2.findById(image.getId()).isPresent()) imageRepository2.delete(image);
+        if(imageRepository2.findById(image.getId()).isPresent())
+        {
+            imageRepository2.deleteById(image.getId());
+        }
     }
 
     public Image findById(int id) {
-        Image image=imageRepository2.findById(id).get();
-        return image;
+        if(imageRepository2.findById(id).isPresent())
+            return imageRepository2.findById(id).get();
+
+        return null;
     }
 
     public int countImagesInScreen(Image image, String screenDimensions) {
