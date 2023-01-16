@@ -33,6 +33,7 @@ public class ImageService {
        // imageRepository2.save(image);
         blogRepository.save(blog);
         return image;
+
     }
 
     public void deleteImage(Image image){
