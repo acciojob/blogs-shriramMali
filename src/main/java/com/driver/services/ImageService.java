@@ -28,21 +28,9 @@ public class ImageService {
         blog.setImageList(imageList);
 
        // imageRepository2.save(image);
+
         blogRepository.save(blog);
         return image;
-
-      /*  Image image=new Image(description,dimensions);
-        image.setBlog(blog1);
-
-        List<Image> imageList=blog1.getImageList();
-        if(imageList==null)
-            imageList=new ArrayList<>();
-        imageList.add(image);
-        blog1.setImageList(imageList);
-
-        blogRepository.save(blog1);
-
-        return image;*/
 
     }
 
