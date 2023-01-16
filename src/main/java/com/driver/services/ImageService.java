@@ -30,13 +30,13 @@ public class ImageService {
 
         blog.setImageList(imageList);
 
-        imageRepository2.save(image);
+       // imageRepository2.save(image);
         blogRepository.save(blog);
         return image;
     }
 
     public void deleteImage(Image image){
-   imageRepository2.delete(image);
+        if(imageRepository2.findById(image.getId()).isPresent()) imageRepository2.delete(image);
     }
 
     public Image findById(int id) {
